@@ -1,0 +1,43 @@
+<!doctype html>
+<html>
+	<head>
+		<title>Avengers</title>
+		<meta charset="utf-8" />    
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<script type="text/javascript" src="./base.js"></script>
+	</head>
+	<body onLoad="onLoad(event)" style="background-color:black;">
+	
+		<script>
+			var result;
+			function onLoad(){
+				result = document.getElementById("result");							
+			}			
+			function searchPhrase(e){
+				var phrase = e.target.value;
+				result.innerHTML = "Загрузка...";
+				var res = "";
+				if (phrase.length >= 3){				
+					for(var c in base){
+						console.log(base[c][0]);
+						for(var i in base[c][1]){
+							if (base[c][1][i].indexOf(phrase) !== -1){
+								res += base[c][0]+" | "+ base[c][1][i]+"<br><hr>";
+							}
+						}					
+					}					
+				}
+				result.innerHTML = res;
+			}
+		</script>
+		
+		<style>
+			input::placeholder {color:white;}
+			input:focus {outline: none;}
+		</style>
+		<img src="./img/logo.png" style="margin: 0px auto;margin-top: 40px;display: block;width: 320px;">
+		<input type="text" onkeyup="searchPhrase(event)" placeholder="Фраза на русском" style="display: block;margin: 0px auto;width: 320px;border: 1px solid #ca0000;height: 17px;padding: 4px;background-color: #5f5f5f;border-radius: 5px;color: white;">
+		<div id="result" style="width: 40%;margin: 0px auto;color: #c1c2c1;line-height: 23px;margin-top: 30px;min-width: 320px;"></div
+	
+	</body>
+</html>
